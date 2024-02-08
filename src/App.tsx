@@ -53,10 +53,10 @@ function App() {
   )
 
   const removeValue = useCallback(() => {
-    if (error) return
+    if (error || isOperatorSwitched) return
     const isValue = input.length > 1 && Number.isFinite(Number(input))
     setInput(prevInput => (isValue ? String(prevInput).slice(0, -1) : '0'))
-  }, [error, input])
+  }, [error, input, isOperatorSwitched])
 
   const showResult = useCallback(() => {
     if (!operator || error) return
