@@ -31,8 +31,8 @@ export default function Keypad({ appendValue, addOperator, removeValue, showResu
       <Button text="DEL" color="secondary" onClick={() => removeValue()} style={{ gridArea: 'del' }} />
       <Button text="." color="primary" onClick={() => appendValue('.')} style={{ gridArea: 'point' }} />
 
-      <Button text="RESET" color="secondary" isWide={true} onClick={reset} style={{ gridArea: 'reset' }} />
-      <Button text="=" color="tertiary" isWide={true} onClick={showResult} style={{ gridArea: 'equals' }} />
+      <Button text="RESET" color="secondary" onClick={reset} style={{ gridArea: 'reset' }} />
+      <Button text="=" color="tertiary" onClick={showResult} style={{ gridArea: 'equals' }} />
     </section>
   )
 }
