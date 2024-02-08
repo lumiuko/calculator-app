@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html[data-theme='default'] {
+    --main-background: 222 26% 31%;
+    --toggle-background: 223 31% 20%;
+    --screen-background: 224 36% 15%;
+    --keypad-background: 223 31% 20%;
+
+    --primary-background: 30 25% 89%;
+    --primary-background-hover: 30 100% 100%;
+    --primary-text: 221 14% 31%;
+    --primary-shadow: 28 16% 65%;
+
+    --secondary-background: 225 21% 49%;
+    --secondary-background-hover: 225 51% 76%;
+    --secondary-text: 0 0% 100%;
+    --secondary-shadow: 224 28% 35%;
+
+    --tertiary-background: 6 63% 50%;
+    --tertiary-background-hover: 6 93% 67%;
+    --tertiary-text: 0 0% 100%;
+    --tertiary-shadow: 6 70% 34%;
+
+    --main-text-color: 0 0% 100%;
+  }
+
+  html[data-theme='light'] {
+    --main-background: 0 0% 90%;
+    --toggle-background: 0 5% 81%;
+    --screen-background: 0 0% 93%;
+    --keypad-background: 0 5% 81%;
+
+    --primary-background: 45 7% 89%;
+    --primary-background-hover: 0 0% 100%;
+    --primary-text: 60 10% 19%;
+    --primary-shadow: 35 11% 61%;
+
+    --secondary-background: 185 42% 37%;
+    --secondary-background-hover: 184 40% 56%;
+    --secondary-text: 0 0% 100%;
+    --secondary-shadow: 185 58% 25%;
+
+    --tertiary-background: 25 98% 40%;
+    --tertiary-background-hover: 25 100% 61%;
+    --tertiary-text: 0 0% 100%;
+    --tertiary-shadow: 25 99% 27%;
+
+    --main-text-color: 60 10% 19%;
+  }
+
+  html[data-theme='violet'] {
+    --main-background: 268 75% 9%;
+    --toggle-background: 268 71% 12%;
+    --screen-background: 268 71% 12%;
+    --keypad-background: 268 71% 12%;
+
+    --primary-background: 268 47% 21%;
+    --primary-background-hover: 268 54% 44%;
+    --primary-text: 52 100% 62%;
+    --primary-shadow: 290 70% 36%;
+
+    --secondary-background: 281 89% 26%;
+    --secondary-background-hover: 280 56% 44%;
+    --secondary-text: 0 0% 100%;
+    --secondary-shadow: 285 91% 52%;
+
+    --tertiary-background: 176 100% 44%;
+    --tertiary-background-hover: 176 100% 79%;
+    --tertiary-text: 198 20% 13%;
+    --tertiary-shadow: 177 92% 70%;
+
+    --main-text-color: 52 100% 62%;
+  }
+}
+
+* {
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+body {
+  min-height: 100vh;
+}
+
+#root {
+  min-height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 1.5rem;
+  padding-block: 2rem;
+}
+
+.keypad {
+  grid-template-areas:
+    'num-7 num-8 num-9 del'
+    'num-4 num-5 num-6 add'
+    'num-1 num-2 num-3 subtract'
+    'point num-0 divide multiply'
+    'reset reset equals equals';
+}
+
+.keypad button:active {
+  translate: 0 3px;
+}
+
+@media (min-width: 768px) {
+  #root {
+    padding: 2.5rem;
+  }
+}
