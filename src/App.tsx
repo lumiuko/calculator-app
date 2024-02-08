@@ -18,7 +18,8 @@ function App() {
     (value: string) => {
       const MAX_INPUT_LENGTH = 12
       if (input.length >= MAX_INPUT_LENGTH && !isOperatorSwitched && !error) return
-      setInput(prevInput => formatValue(isOperatorSwitched ? value : prevInput + value, isOperatorSwitched))
+
+      setInput(prevInput => formatValue(isOperatorSwitched && value !== '.' ? value : prevInput + value, isOperatorSwitched))
       setIsOperatorSwitched(false)
       setError(null)
     },
