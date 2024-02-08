@@ -33,7 +33,7 @@ export default function Header() {
 
   return (
     <header className="flex justify-between items-end">
-      <h1 className="text-xl leading-7 tracking-tight">calc</h1>
+      <h1 className="text-xl leading-7 tracking-tight ml-2">calc</h1>
       <div className="flex items-end gap-[1.625rem] text-sm leading-3">
         <p className="uppercase tracking-wider mb-[0.3125rem]">Theme</p>
         <div className="flex flex-col gap-1">
