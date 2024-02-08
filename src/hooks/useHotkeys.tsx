@@ -27,7 +27,7 @@ export default function useHotkeys({ showResult, removeValue, reset, appendValue
       if (key.match(numRegex)) {
         appendValue(key)
       } else if (key.match(operatorRegex)) {
-        addOperator(key as Operator)
+        addOperator(key.replace('*', 'x') as Operator)
       } else if (key in specialHotkeys) {
         specialHotkeys[key as keyof typeof specialHotkeys]()
       }

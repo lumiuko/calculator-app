@@ -17,23 +17,31 @@ function App() {
   const appendValue = useCallback(
     (value: string) => {
       const MAX_INPUT_LENGTH = 12
-      if (input.length >= MAX_INPUT_LENGTH && !isOperatorSwitched) return
-
+      if (input.length >= MAX_INPUT_LENGTH && !isOperatorSwitched && !error) return
       setInput(prevInput => formatValue(isOperatorSwitched ? value : prevInput + value, isOperatorSwitched))
       setIsOperatorSwitched(false)
+      setError(null)
     },
-    [input.length, isOperatorSwitched]
+    [input.length, isOperatorSwitched, error]
   )
 
   const addOperator = useCallback(
     (newOperator: Operator) => {
+      if (error) return
       setOperator(newOperator)
-      if (isOperatorSwitched || error) return
+      if (isOperatorSwitched) return
 
       if (savedInput && operator) {
-        const result = calculate(savedInput, input, operator)
-        setSavedInput(result.toString().replace(/\.$/, ''))
-        setInput(result.toString())
+        try {
+          const result = calculate(savedInput, input, operator)
+          setSavedInput(result.toString().replace(/\.$/, ''))
+          setInput(result.toString())
+        } catch (err) {
+          if (!(err instanceof Error)) return
+          setError(err.message ?? 'Error')
+          setSavedInput('0')
+          setOperator(null)
+        }
       } else {
         setSavedInput(input.replace(/\.$/, ''))
       }
@@ -59,6 +67,7 @@ function App() {
     } catch (err) {
       if (!(err instanceof Error)) return
       setError(err.message ?? 'Error')
+      setSavedInput('0')
     } finally {
       setIsOperatorSwitched(true)
       setOperator(null)
