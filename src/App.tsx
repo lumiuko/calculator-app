@@ -14,11 +14,6 @@ function App() {
   const [isOperatorSwitched, setIsOperatorSwitched] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  function clear() {
-    setSavedInput('0')
-    setOperator(null)
-  }
-
   const appendValue = useCallback(
     (value: string) => {
       const MAX_INPUT_LENGTH = 12
@@ -59,21 +54,23 @@ function App() {
 
     try {
       const result = calculate(savedInput, input, operator)
-      setInput(String(result))
+      setInput(result.toString())
+      setSavedInput(result.toString())
     } catch (err) {
       if (!(err instanceof Error)) return
       setError(err.message ?? 'Error')
     } finally {
       setIsOperatorSwitched(true)
-      clear()
+      setOperator(null)
     }
   }, [error, input, operator, savedInput])
 
   const reset = useCallback(() => {
     setInput('0')
+    setSavedInput('0')
     setError(null)
     setIsOperatorSwitched(false)
-    clear()
+    setOperator(null)
   }, [])
 
   useHotkeys({ showResult, removeValue, reset, appendValue, addOperator })
