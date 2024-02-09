@@ -16,7 +16,7 @@ function App() {
 
   const appendValue = useCallback(
     (value: string) => {
-      const MAX_INPUT_LENGTH = 12
+      const MAX_INPUT_LENGTH = 15
       if (input.length >= MAX_INPUT_LENGTH && !isOperatorSwitched && !error) return
 
       setInput(prevInput => formatValue(isOperatorSwitched && value !== '.' ? value : prevInput + value, isOperatorSwitched))

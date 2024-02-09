@@ -19,9 +19,10 @@ export default function Screen({ input, savedInput, operator, error }: ScreenPro
         </div>
       )}
       <p
-        className="text-2xl leading-[2.375rem] md:text-3xl md:leading-[3.25rem] overflow-hidden flex justify-end "
+        className="text-2xl leading-[2.375rem] md:text-3xl md:leading-[3.25rem] overflow-hidden flex justify-end screen"
         role="region"
         aria-live="polite"
+        style={{ fontSize: input.length > 10 ? `calc(var(--default-size) / ${input.length})` : '' }}
       >
         {error ?? Number(input).toLocaleString('en-US', { minimumFractionDigits })}
       </p>

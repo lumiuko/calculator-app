@@ -106,8 +106,16 @@ body {
   translate: 0 3px;
 }
 
+.screen {
+  --default-size: 24rem;
+}
+
 @media (min-width: 768px) {
   #root {
     padding: 2.5rem;
+  }
+
+  .screen {
+    --default-size: 40rem;
   }
 }
